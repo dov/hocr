@@ -1,7 +1,7 @@
 ## Makefile.am -- Process this file with automake to produce Makefile.in
 
 # The libhocr library
-INCLUDES = \
+AM_CPPFLAGS = \
         $(hspell_CFLAGS) \
         $(tiff_CFLAGS) \
         $(fftw_CFLAGS) \
@@ -24,12 +24,12 @@ libhocr_la_SOURCES = \
         ho_font.c \
         ho_recognize.c \
         ho_recognize_nikud.c \
-        fonts/ho_recognize_font_1.c \
-        fonts/ho_recognize_font_2.c \
-        fonts/ho_recognize_font_3.c \
-        fonts/ho_recognize_font_4.c \
-        fonts/ho_recognize_font_5.c \
-        fonts/ho_recognize_font_6.c \
+        ho_recognize_font_1.c \
+        ho_recognize_font_2.c \
+        ho_recognize_font_3.c \
+        ho_recognize_font_4.c \
+        ho_recognize_font_5.c \
+        ho_recognize_font_6.c \
         ho_string.c \
         ho_linguistics.c \
         ho_layout.c
@@ -57,12 +57,12 @@ library_include_HEADERS = \
          ho_font.h \
          ho_recognize.h \
          ho_recognize_nikud.h \
-         fonts/ho_recognize_font_1.h \
-         fonts/ho_recognize_font_2.h \
-         fonts/ho_recognize_font_3.h \
-         fonts/ho_recognize_font_4.h \
-         fonts/ho_recognize_font_5.h \
-         fonts/ho_recognize_font_6.h \
+         ho_recognize_font_1.h \
+         ho_recognize_font_2.h \
+         ho_recognize_font_3.h \
+         ho_recognize_font_4.h \
+         ho_recognize_font_5.h \
+         ho_recognize_font_6.h \
          ho_layout.h \
          ho_string.h \
          ho_linguistics.h \

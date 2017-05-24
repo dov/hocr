@@ -590,7 +590,7 @@ hocr_image_processing_with_debug (ho_pixbuf * pix)
   /* prompt user scale */
   if (debug && scale_by)
     if (scale_by == 1)
-      g_print (" user no scaling.\n", scale_by);
+      g_print (" user no scaling.\n");
     else
       g_print (" user scale by %d.\n", scale_by);
 
@@ -1855,7 +1855,7 @@ main (int argc, char *argv[])
     }
 
     /* init the first line of data file */
-    text_out = g_strdup_printf (html_debug_header);
+    text_out = g_strdup_printf ("%s", html_debug_header);
     ho_string_cat (s_data_out, text_out);
     g_free (text_out);
   }
@@ -1875,7 +1875,7 @@ main (int argc, char *argv[])
   /* end of page */
   if (text_out_html && s_text_out)
   {
-    text_out = g_strdup_printf (html_page_footer);
+    text_out = g_strdup_printf ("%s", html_page_footer);
     ho_string_cat (s_text_out, text_out);
     g_free (text_out);
   }
@@ -1883,7 +1883,7 @@ main (int argc, char *argv[])
   /* close data file html fromat */
   if (s_data_out)
   {
-    text_out = g_strdup_printf (html_debug_footer);
+    text_out = g_strdup_printf ("%s", html_debug_footer);
     ho_string_cat (s_data_out, text_out);
     g_free (text_out);
   }
@@ -1906,7 +1906,7 @@ main (int argc, char *argv[])
   {
     /* if filename is '-' print to stdout */
     if (text_out_filename[0] == '-' && text_out_filename[1] == '\0')
-      g_printf (text_out);
+      g_printf ("%s", text_out);
     else
       g_file_set_contents (text_out_filename, text_out, -1, &error);
 

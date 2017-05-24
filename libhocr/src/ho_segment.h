@@ -76,7 +76,7 @@ ho_bitmap *ho_segment_paragraphs (const ho_bitmap * m, const unsigned char box);
  @param erode_arg factor for eroding line sourface
  @return a newly allocated bitmap
  */
-ho_bitmap *ho_segment_lines_fine (const ho_bitmap * m,
+ho_bitmap *ho_segment_lines_fine (ho_bitmap * m,
   const double font_height_factor_min, const double font_height_factor_max,
   const double font_width_factor_min, const double font_width_factor_max,
   const double link_arg, const double link_arg_2,
@@ -87,7 +87,7 @@ ho_bitmap *ho_segment_lines_fine (const ho_bitmap * m,
  @param m pointer to an ho_bitmap
  @return a newly allocated bitmap
  */
-ho_bitmap *ho_segment_lines (const ho_bitmap * m);
+ho_bitmap *ho_segment_lines (ho_bitmap * m);
 
 /**
  return a bitmap of the words

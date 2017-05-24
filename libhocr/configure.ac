@@ -2,10 +2,12 @@ dnl Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.59)
 
-AC_INIT([libhocr], [0.10.17], [Yaacov Zamir <kzamir@walla.co.il>])
+AC_INIT([libhocr], [0.10.18])
+
+AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_AUX_DIR([config])
 
-AM_INIT_AUTOMAKE([1.9 foreign])
+AM_INIT_AUTOMAKE([subdir-objects])
 
 AC_PROG_CC
 AM_PROG_LIBTOOL
@@ -165,25 +167,25 @@ AC_ARG_WITH(python-sitelib-dir,
   [path to python site lib])])
 
 if test "$have_python" = "yes"; then
-    PY_PREFIX=`python -c 'import sys ; print sys.prefix'`
+    PY_PREFIX=`$PYTHON -c 'import sys; print sys.prefix'`
     AC_MSG_CHECKING(for $PY_PREFIX/include/python${PYTHON_VERSION}/Python.h)
     if test -f $PY_PREFIX/include/python${PYTHON_VERSION}/Python.h; then
-		  AC_MSG_RESULT(yes)
-		  PY_CFLAGS="-I$PY_PREFIX/include/python${PYTHON_VERSION}"
-		  
-		  if test "$with_python_sitelib_dir" = "" ; then
-		    PY_MODULES_PATH=$pythondir
-		  else
-		    PY_MODULES_PATH=$with_python_sitelib_dir
-		  fi
-		  
-		  AC_SUBST([PY_CFLAGS])
-		  AC_SUBST([PY_MODULES_PATH])
-		  
-	  else
-		  AC_MSG_RESULT(no)
-		  build_python=no
-	  fi
+          AC_MSG_RESULT(yes)
+          PY_CFLAGS="-I$PY_PREFIX/include/python${PYTHON_VERSION}"
+          
+          if test "$with_python_sitelib_dir" = "" ; then
+            PY_MODULES_PATH=$pythondir
+          else
+            PY_MODULES_PATH=$with_python_sitelib_dir
+          fi
+          
+          AC_SUBST([PY_CFLAGS])
+          AC_SUBST([PY_MODULES_PATH])
+          
+      else
+          AC_MSG_RESULT(no)
+          build_python=no
+      fi
 fi
 
 if test "$have_swig" = "no"; then
@@ -314,7 +316,7 @@ echo OS: ${host}
 echo build: $BUILD_STR
 echo prefix: $prefix
 echo compiler: ${CC}
-echo have swig:	${have_swig}
+echo have swig:    ${have_swig}
 echo pkg-config path: ${PKG_CONFIG}
 echo
 echo with glib: ${build_glib}

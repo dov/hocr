@@ -2,7 +2,7 @@ EXTRA_DIST = hocr.c
 
 if WITH_HOCR
 
-INCLUDES=-I$(top_srcdir)/src
+AM_CPPFLAGS=-I$(top_srcdir)/src
 
 DEPS= $(top_builddir)/src/libhocr.la
 ldadd= $(top_builddir)/src/libhocr.la -lm
