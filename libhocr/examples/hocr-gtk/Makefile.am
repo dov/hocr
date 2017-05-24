@@ -9,7 +9,7 @@ he/sane-pygtk.mo sv/sane-pygtk.mo
 
 if WITH_HOCR_GTK
 
-bin_SCRIPTS = hocr-gtk sane-pygtk
+bin_CPPFLAGS = hocr-gtk sane-pygtk
 
 Applicationsdir = $(datadir)/applications
 Applications_DATA = hocr-gtk.desktop sane-pygtk.desktop

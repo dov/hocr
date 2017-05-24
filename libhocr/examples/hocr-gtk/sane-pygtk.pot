@@ -1,22 +1,21 @@
-# Swedish translations for libhocr package
-# Svenska översättningar för paket libhocr.
-# Copyright (C) 2008 THE libhocr'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the libhocr package.
-# kobi <kzamir@walla.co.il>, 2008.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: libhocr 0.10.7\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-12-04 11:36+0200\n"
-"PO-Revision-Date: 2008-04-28 18:50+0300\n"
-"Last-Translator: kobi <kzamir@walla.co.il>\n"
-"Language-Team: Swedish\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: sane-pygtk:81
 msgid ""

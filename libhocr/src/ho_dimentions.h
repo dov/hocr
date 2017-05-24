@@ -93,6 +93,6 @@ ho_dimentions_get_columns_with_x_start (const ho_bitmap * m,
  @return guessed angle in degrees
  */
 double
-ho_dimentions_get_lines_angle (const ho_bitmap * m);
+ho_dimentions_get_lines_angle (ho_bitmap * m);
 
 #endif /* HO_DIMENTIONS_H */

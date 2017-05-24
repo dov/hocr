@@ -1,3 +1,13 @@
+libhocr (0.10.18)
+
+ * Add Debian patches by 
+   - Lior Kaplan <kaplan@debian.org> 
+   - Oron Peled <oron_at_actcom.co.il>
+ * Some memory leaks patched by
+   - Diego Iastrubni <elcuco__at__kde.org>
+ 
+ -- Yaacov Zamir <kzamir_at_walla.co.il>  Wednesday, 4 Dec 2013 11:50
+ 
 libhocr (0.10.17)
 
  * Font recognition fine tuning

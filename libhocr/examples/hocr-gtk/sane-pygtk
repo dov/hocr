@@ -51,19 +51,20 @@ except (IOError,locale.Error), e:
 
 # set global functions
 def get_scanner_option (scanner, name):
-  options = scanner.get_options()
-  
-  for option in options:
-    if option[1] == name:
-       return option
-  return False
+    options = scanner.get_options()
+    
+    for option in options:
+        if option[1] == name:
+            return option
+            
+    return False
 
 def show_error_message(message):
-	dlg = gtk.MessageDialog(type=gtk.MESSAGE_ERROR
-				,message_format = message
-				,buttons=gtk.BUTTONS_OK)
-	dlg.run()
-	dlg.destroy()
+    dlg = gtk.MessageDialog(type=gtk.MESSAGE_ERROR
+                ,message_format = message
+                ,buttons=gtk.BUTTONS_OK)
+    dlg.run()
+    dlg.destroy()
 
 class MainWindow:
     def __init__(self):
@@ -152,7 +153,6 @@ class MainWindow:
         
         # get scanners in system
         self.sane_devices = sane.get_devices()
-        self.sane_devices_counter = len(self.sane_devices)
         
         # set the scanners combobox
         for device in self.sane_devices:
@@ -204,13 +204,25 @@ class MainWindow:
         dialog.run()
         
         dialog.destroy()
-        
-    def button_preview_clicked_cb(self, obj):
-        "button_preview_clicked_cb activated"
-        
+
+    def open_scanner(self):
+        " try to open a sccaner "
+        if len(self.sane_devices) <= 0:
+            show_error_message(_("No scanners reported by sane"))
+            raise RuntimeError("No scanners reported by sane\nRecheck your sane configuration")
         # open scanner
         scanner_number = self.config.getint('settings', 'scanner') - 1
+        if scanner_number < 0 or scanner_number >= len(self.sane_devices):
+            show_error_message(_("Bad scanner number %d configured.\nPlease select a valid scanner from the list") % scanner_number)
+            raise RuntimeError("Invalid scanner %d" % scanner_number)
         scanner = sane.open(self.sane_devices[scanner_number][0])
+        
+        return scanner
+    
+    def button_preview_clicked_cb(self, obj):
+        "button_preview_clicked_cb activated"
+        # open scanner
+        scanner = self.open_scanner()
         
         # options
         options = get_scanner_option (scanner, 'mode')
@@ -278,8 +290,7 @@ class MainWindow:
     def button_scan_clicked_cb(self, obj):
         "button_scan_clicked_cb activated"
         # open scanner
-        scanner_number = self.config.getint('settings', 'scanner') - 1
-        scanner = sane.open(self.sane_devices[scanner_number][0])
+        scanner = self.open_scanner()
         
         # options
         options = get_scanner_option (scanner, 'mode')
@@ -529,7 +540,8 @@ class MainWindow:
         # reset settings options
         if scanner_number < len(self.sane_devices):
             try:
-                scanner = sane.open(self.sane_devices[scanner_number][0])
+                # open scanner
+                scanner = self.open_scanner()
                 
                 # if scanner exist fill in all the settings
                 
